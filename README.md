@@ -1,9 +1,28 @@
 # FLAIR MRI Sequence Synthesis Using Squeeze Attention Generative Model for Reliable Brain Tumor Segmentation
 
-## Model architechtures
+This repository accompanies a [2024 Alexandria Engineering Journal paper](https://doi.org/10.1016/j.aej.2024.05.008) on missing-sequence MRI synthesis. The team used an attention-based generative model to synthesize FLAIR from other MRI sequences, then evaluated its use in downstream glioma segmentation with nnU-Net.
+
+**Start here:** [synthesis notebook](SECOND%20NOTEBOOK%28GANS%20INFERENCE%29.ipynb) · [segmentation notebook](THIRD%20NOTEBOOK%28SEGMENTAION%29.ipynb) · [paper and reported results](https://doi.org/10.1016/j.aej.2024.05.008).
+
+The public workflow assumes FLAIR is missing and uses the remaining sequences as input. It includes preprocessing, synthesis, segmentation, and optional restoration of the prediction to the original shape.
+
+## Published results
+
+The study evaluated 251 BraTS 2021 cases. Table 3 of the [paper](https://doi.org/10.1016/j.aej.2024.05.008) reports mean Dice across whole tumor, tumor core, and enhancing tumor:
+
+| FLAIR input | Mean Dice |
+| --- | ---: |
+| Zero-filled missing FLAIR | 0.688 |
+| Copy of T2-weighted MRI | 0.803 |
+| FLAIR synthesized from T2-weighted MRI | 0.873 |
+| Acquired FLAIR | 0.901 |
+
+Synthesized FLAIR recovered much of the downstream segmentation performance lost when FLAIR was unavailable. These are the published study results.
+
+## Model architectures
 <img src="https://github.com/A-shazli/MRI_SEQ_SYNTH/assets/61319952/34064ca4-1420-44d3-aec0-fb47d44a3a80">
 
-## Full framwork
+## Full framework
 <img src="https://github.com/A-shazli/MRI_SEQ_SYNTH/assets/61319952/0c85cd27-8df0-4774-a26c-7158740e9544">
 
 ## Application
@@ -73,7 +92,7 @@ This is the notebook that you can use if you want to train your own Attention GA
 This project is licensed under the GNU general public License - see the <a href='https://github.com/A-shazli/MRI_SEQ_SYNTH/blob/main/LICENSE'>LICENSE.txt</a> file for details
 
 ## Citation
-<p>If you find this code useful, feel free to use it (or part of it) in your project and please cite our <a href=''>paper</a>:</p>
+<p>If you find this code useful, feel free to use it (or part of it) in your project and please cite our <a href='https://doi.org/10.1016/j.aej.2024.05.008'>paper</a>:</p>
 
 ```
 @article{
